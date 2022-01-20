@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <title>数字校园</title>
+  <base href="/">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=.5,minimum-scale=.5,maximum-scale=.5,user-scalable=no" />
+  <link rel="shortcut icon" href="https://static.k12top.com/Common/yunmalogo_new.png" />
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+  <style>
+    .show {
+      display: block !important;
+      background: #fff;
+      color: #000;
+      height: 40px;
+      line-height: 40px;
+      position: fixed;
+      width: 100%;
+      bottom: 0px;
+    }
+
+    .none {
+      display: none !important;
+      background: #fff;
+      color: #000;
+      height: 40px;
+      line-height: 40px;
+      position: fixed;
+      width: 100%;
+      bottom: 0px;
+    }
+
+    #footer {
+      font-size: .7rem;
+    }
+  </style>
+<link rel="stylesheet" href="styles.377f9761a6ec042a2e6f.css"></head>
+<body onLoad="javascript:window.resizeTo(screen.availWidth,screen.availHeight);window.moveTo(0,0)">
+  <app-root></app-root>
+  <div id="footer" class="none">
+    <div style="display: table; width: 100%;">
+      <div style="text-align: left; width: 70%; display: table-cell; padding-left: 20px;">
+        Copyright 2016-2020 苏州云码信息科技有限公司 苏ICP备15011145号
+      </div>
+      <div style="text-align: right; width: 30%; display: table-cell; padding-right: 20px;">版本号：v3.0.0</div>
+    </div>
+  </div>
+<script src="runtime.5b7cd2aa41d0699e3e94.js" defer></script><script src="polyfills.d31e5be32dc55fb3fb3e.js" defer></script><script src="scripts.7894b5dae7947a886482.js" defer></script><script src="main.dd66bb0d51e670deaab9.js" defer></script></body>
+<script type="text/javascript">
+  window.onload = function (event) {
+    document.addEventListener("mousemove", function (e) {
+      let height = document.body.clientHeight;
+      if (e.clientY + 40 > height) {
+        document.getElementById('footer').className = 'show';
+      } else {
+        document.getElementById('footer').className = 'none';
+      }
+    })
+  }
+</script>
+
+</html>
