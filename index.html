@@ -2,66 +2,226 @@
 <html lang="zh-cmn-Hans">
 
 <head>
-  <meta charset="utf-8">
-  <title>数字校园</title>
-  <base href="/">
-  <meta name="viewport"
-    content="width=device-width,initial-scale=.5,minimum-scale=.5,maximum-scale=.5,user-scalable=no" />
-  <link rel="shortcut icon" href="https://static.k12top.com/Common/yunmalogo_new.png" />
-  <meta http-equiv="Expires" content="0">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Cache-control" content="no-cache">
-  <meta http-equiv="Cache" content="no-cache">
-  <style>
-    .show {
-      display: block !important;
-      background: #fff;
-      color: #000;
-      height: 40px;
-      line-height: 40px;
-      position: fixed;
-      width: 100%;
-      bottom: 0px;
-    }
+    <meta charset="utf-8">
+    <title>数字校园</title>
+    <base href="/">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=.5,minimum-scale=.5,maximum-scale=.5,user-scalable=no" />
+    <link rel="shortcut icon" href="https://static.k12top.com/Common/yunmalogo_new.png" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <style>
+        .show {
+            display: block !important;
+            background: #fff;
+            color: #000;
+            height: 40px;
+            line-height: 40px;
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+        }
 
-    .none {
-      display: none !important;
-      background: #fff;
-      color: #000;
-      height: 40px;
-      line-height: 40px;
-      position: fixed;
-      width: 100%;
-      bottom: 0px;
-    }
+        .none {
+            display: none !important;
+            background: #fff;
+            color: #000;
+            height: 40px;
+            line-height: 40px;
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+        }
 
-    #footer {
-      font-size: .7rem;
-    }
-  </style>
-<link rel="stylesheet" href="styles.377f9761a6ec042a2e6f.css"></head>
+        #footer {
+            font-size: .7rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            -webkit-animation-name: fadeIn;
+            -webkit-animation-duration: 0.4s;
+            animation-name: fadeIn ;
+            animation-duration: 0.4s
+        }
+
+        .modal-content {
+            position: fixed;
+            bottom: 0;
+            background-color: #fefefe;
+            width: 100%;
+            -webkit-animation-name: slideIn;
+            -webkit-animation-duration: 0.4s;
+            animation-name: slideIn;
+            animation-duration: 0.4s
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #2eacff;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #2eacff;
+            color: white;
+        }
+
+        @-webkit-keyframes slideIn {
+            from {
+                bottom: -300px;
+                opacity: 0
+            }
+
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                bottom: -300px;
+                opacity: 0
+            }
+
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="styles.377f9761a6ec042a2e6f.css">
+</head>
+
 <body onLoad="javascript:window.resizeTo(screen.availWidth,screen.availHeight);window.moveTo(0,0)">
-  <app-root></app-root>
-  <div id="footer" class="none">
-    <div style="display: table; width: 100%;">
-      <div style="text-align: left; width: 70%; display: table-cell; padding-left: 20px;">
-        Copyright 2016-2020 苏州云码信息科技有限公司 苏ICP备15011145号
-      </div>
-      <div style="text-align: right; width: 30%; display: table-cell; padding-right: 20px;">版本号：v3.0.0</div>
+    <app-root></app-root>
+    <div id="footer" class="none">
+        <div style="display: table; width: 100%;">
+            <div style="text-align: left; width: 70%; display: table-cell; padding-left: 20px;">
+                Copyright 2016-2020 苏州云码信息科技有限公司 苏ICP备15011145号
+            </div>
+            <a onclick="dev()"
+                style="user-select:none; text-align: right; width: 30%; display: table-cell; padding-right: 20px;">版本号：v3.0.0</a>
+        </div>
     </div>
-  </div>
-<script src="runtime.5b7cd2aa41d0699e3e94.js" defer></script><script src="polyfills.d31e5be32dc55fb3fb3e.js" defer></script><script src="scripts.7894b5dae7947a886482.js" defer></script><script src="main.dd66bb0d51e670deaab9.js" defer></script></body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Cai1hsu's Dev Tool</h2>
+            </div>
+            <div class="modal-body">
+                <p>你可以在本页修改角色权限,修改完成点刷新生效.</p>
+                <button onclick="setRole(0)">学生</button>
+                <button onclick="setRole(1)">教师</button>
+                <button onclick="setRole(2)">导师</button>
+                <button onclick="setRole(3)">学校管理员</button>
+                <button onclick="setRole(4)">超级管理员</button>
+                <button onclick="window.location.href=window.location.origin">刷新</button>
+            </div>
+            <div class="modal-footer">
+                <h3 id="show-role-panel"></h3>
+            </div>
+        </div>
+
+    </div>
+    <script src="runtime.5b7cd2aa41d0699e3e94.js" defer></script>
+    <script src="polyfills.d31e5be32dc55fb3fb3e.js" defer></script>
+    <script src="scripts.7894b5dae7947a886482.js" defer></script>
+    <script src="main.dd66bb0d51e670deaab9.js" defer></script>
+</body>
 <script type="text/javascript">
-  window.onload = function (event) {
-    document.addEventListener("mousemove", function (e) {
-      let height = document.body.clientHeight;
-      if (e.clientY + 40 > height) {
-        document.getElementById('footer').className = 'show';
-      } else {
-        document.getElementById('footer').className = 'none';
-      }
-    })
-  }
+    window.onload = function (event) {
+        document.addEventListener("mousemove", function (e) {
+            let height = document.body.clientHeight;
+            if (e.clientY + 40 > height) {
+                document.getElementById('footer').className = 'show';
+            } else {
+                document.getElementById('footer').className = 'none';
+            }
+        })
+    }
+    var devclick = 0;
+    function dev() {
+        return ++devclick < 3 ? null : (() => {
+            var modal = document.getElementById('myModal');
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            var rolepanel = document.getElementById('show-role-panel');
+            rolepanel.innerText = "当前角色为: " + window.localStorage.getItem("USER_ROLE");
+            modal.style.display = "block";
+            console.log("dev mode opened.");
+        })();
+    }
+    const devroles = [
+        "{\"_expired\":0,\"_value\":{\"roleID\":\"d25beb10b13647b096390df9abd88f6b\",\"roleName\":\"学生\",\"orgSerialNo\":\"YM000000001\",\"userType\":5,\"selected\":true}}" ,
+        "{\"_expired\":0,\"_value\":{ \"roleID\": \"85762b46ced041fca48c75bac7e0fff1\", \"roleName\": \"教师\", \"orgSerialNo\": \"YM000000001\", \"userType\": 4, \"selected\": true }}" ,
+        "{\"_expired\":0,\"_value\":{ \"roleID\": \"76f361124fc246939eea9ceefa9f0f3d\", \"roleName\": \"导师\", \"orgSerialNo\": \"YM000000001\", \"userType\": 7, \"selected\": true }}" ,
+        "{\"_expired\":0,\"_value\":{\"roleID\":\"56551afeae5b4fb3a5e3b9276bdab5ae\",\"roleName\":\"学校管理员\",\"orgSerialNo\":\"YM000000001\",\"userType\":2,\"selected\":true}}" ,
+        "{\"_expired\":0,\"_value\":{ \"roleID\": \"73AEF62A61F34D47A61D126E07503B35\", \"roleName\": \"超级管理员\", \"orgSerialNo\": \"YM000000001\", \"userType\": 1, \"selected\": true }}"
+    ]
+    function setRole(i){
+        return (i > -1 && i < 5) ? 
+            (window.localStorage.USER_ROLE = devroles[i] , rolepanel.innerText = "当前角色为: " + window.localStorage.getItem("USER_ROLE")) : alert("你tm怎么点的");
+    }
 </script>
 
 </html>
